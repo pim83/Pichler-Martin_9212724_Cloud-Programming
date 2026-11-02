@@ -1,0 +1,43 @@
+{
+  "generator_version": "2.0",
+  "synthetic": true,
+  "seed": 42,
+  "pair_id": "pair_0000",
+  "test_stand_id": "SIM-01",
+  "test_id": "SIM-TEST-0000",
+  "sample_rate_hz": 10000,
+  "duration_seconds": 60,
+  "sample_count": 600000,
+  "axes": [
+    "x",
+    "y",
+    "z"
+  ],
+  "unit": "m/s^2",
+  "dtype": "float32",
+  "gravity_included": false,
+  "time_reference": "seconds since measurement start; t[i] = i / sample_rate_hz",
+  "normal_parameters": {
+    "base_frequency_hz": 31.09582419422385,
+    "amplitude_per_axis_m_s2": [
+      0.4444990595776847,
+      0.321515875194683,
+      0.20789472116237456
+    ],
+    "noise_std_m_s2": 0.025
+  },
+  "condition": "normal",
+  "disturbance": null,
+  "statistics": {
+    "rms_per_axis_m_s2": [
+      0.3290174066664136,
+      0.2385589655961778,
+      0.15543893709637507
+    ],
+    "peak_abs_per_axis_m_s2": [
+      0.6646167039871216,
+      0.5283284783363342,
+      0.4071321487426758
+    ]
+  }
+}

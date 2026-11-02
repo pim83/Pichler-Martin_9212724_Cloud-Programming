@@ -1,0 +1,61 @@
+{
+  "generator_version": "2.0",
+  "synthetic": true,
+  "seed": 42,
+  "pair_id": "pair_0000",
+  "test_stand_id": "SIM-01",
+  "test_id": "SIM-TEST-0000",
+  "sample_rate_hz": 10000,
+  "duration_seconds": 60,
+  "sample_count": 600000,
+  "axes": [
+    "x",
+    "y",
+    "z"
+  ],
+  "unit": "m/s^2",
+  "dtype": "float32",
+  "gravity_included": false,
+  "time_reference": "seconds since measurement start; t[i] = i / sample_rate_hz",
+  "normal_parameters": {
+    "base_frequency_hz": 31.09582419422385,
+    "amplitude_per_axis_m_s2": [
+      0.4444990595776847,
+      0.321515875194683,
+      0.20789472116237456
+    ],
+    "noise_std_m_s2": 0.025
+  },
+  "condition": "impacts",
+  "disturbance": {
+    "start_sample": 0,
+    "end_sample_exclusive": 600000,
+    "start_seconds": 0,
+    "end_seconds": 60.0,
+    "type": "repeated_impacts",
+    "label_semantics": "faulty operating condition throughout the window",
+    "parameters": {
+      "severity": 1.0,
+      "axis_weights": [
+        1.0,
+        0.6,
+        0.3
+      ],
+      "resonance_hz": 1200,
+      "repetition_hz": 5,
+      "decay_seconds": 0.008
+    }
+  },
+  "statistics": {
+    "rms_per_axis_m_s2": [
+      0.3863085969208031,
+      0.2677302056075377,
+      0.1668743619232591
+    ],
+    "peak_abs_per_axis_m_s2": [
+      2.978017568588257,
+      1.8771826028823853,
+      0.9737963676452637
+    ]
+  }
+}

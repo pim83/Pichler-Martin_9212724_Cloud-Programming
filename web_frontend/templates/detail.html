@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<a href="{{ url_for('index', device_id=device) }}">← Zur Messungsübersicht</a>
+<p class="eyebrow">MESSUNGSDETAILS</p><h1>{{ row.device_id }}</h1><p class="mono">{{ row.measurement_id }}</p>
+<section class="cards"><article><span>Ergebnis</span><strong class="result">{{ 'Auffällig' if row.measurement_anomalous else 'Normal' }}</strong></article>
+<article><span>Auffällige Analysefenster</span><strong>{{ row.anomalous_percent|percent }}</strong></article></section>
+<section class="panel"><h2>Analyse</h2><dl>
+<dt>Auffällige Fenster / Gesamt</dt><dd>{{ row.anomalous_windows }} / {{ row.window_count }}</dd>
+<dt>Alarmgrenze (Fensteranteil)</dt><dd>{{ (row.alarm_fraction * 100)|percent }}</dd>
+<dt>Mittlerer Rekonstruktionsfehler</dt><dd>{{ '%.4f'|format(row.mean_error) }}</dd>
+<dt>Fehlerschwelle je Fenster</dt><dd>{{ '%.4f'|format(row.threshold) }}</dd>
+<dt>Letzte Aktualisierung</dt><dd>{{ row.updated_at|localtime }}</dd></dl></section>
+<section class="panel"><h2>Messdaten</h2><dl>
+<dt>Messwerte je Achse</dt><dd>{{ row.sample_count }}</dd><dt>Abtastrate</dt><dd>{{ row.sample_rate_hz }} Hz</dd>
+<dt>Achsen / Einheit</dt><dd>{{ row.axes|join(', ') }} / {{ row.unit }}</dd>
+</dl></section>
+{% endblock %}

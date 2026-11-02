@@ -1,0 +1,9 @@
+numpy==2.5.4
+azure-storage-blob>=12.20,<13
+azure-identity>=1.17,<2
+azure-eventhub>=5.12,<6
+# Synchroner AMQP-over-WebSockets-Empfang auf Port 443.
+websocket-client==1.9.0
+azure-eventhub-checkpointstoreblob>=1.2,<2
+azure-cosmos>=4.7,<5
+requests==2.34.2

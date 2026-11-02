@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prüfstand · Messungsübersicht</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="brand" href="/">Prüfstand <span>Monitoring</span></a>
+{% if session.get('authenticated') %}<form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf" value="{{ session.csrf }}"><button type="submit">Abmelden</button></form>{% endif %}</header>
+<main>{% block content %}{% endblock %}</main>
+<footer>Projekt-Testbetrieb · Anzeige gespeicherter Messergebnisse · Zeitangaben: Europe/Vienna</footer></body></html>

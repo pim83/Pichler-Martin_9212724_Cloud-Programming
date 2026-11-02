@@ -1,0 +1,29 @@
+{
+  "threshold": 1.0965192192850572,
+  "alarm_fraction": 0.1,
+  "results": [
+    {
+      "file": "messung_gut.npy",
+      "window_count": 600,
+      "anomalous_windows": 10,
+      "anomalous_fraction": 0.016666666666666666,
+      "measurement_anomalous": false,
+      "mean_error": 0.4409219322477583,
+      "max_error": 2.3745264235254533,
+      "expected_anomalous": false,
+      "matches_expectation": true
+    },
+    {
+      "file": "messung_schlecht.npy",
+      "window_count": 600,
+      "anomalous_windows": 305,
+      "anomalous_fraction": 0.5083333333333333,
+      "measurement_anomalous": true,
+      "mean_error": 105.50034181015562,
+      "max_error": 409.8394312263707,
+      "expected_anomalous": true,
+      "matches_expectation": true
+    }
+  ],
+  "limitation": "Zwei synthetische Funktionstests, kein Nachweis realer Diagnosequalität."
+}

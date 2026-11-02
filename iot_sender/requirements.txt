@@ -1,0 +1,2 @@
+numpy>=1.26,<3
+azure-iot-device==2.14.0

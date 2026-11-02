@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "E-Mail_senden_(V2)": {
+      "inputs": {
+        "body": {
+          "Body": "<p class=\"editor-paragraph\">Hallo,<br><br>der Inferenz-Service hat eine Messung als auffällig eingestuft.<br>Bitte prüfe das Analyseergebnis in Cosmos DB und die zugehörigen Messdaten im Blob Storage.<br><br>Prüfstand: @{triggerBody()?['data']?['device_id']}<br>Messungs-ID: @{triggerBody()?['data']?['measurement_id']}<br>Anteil auffälliger Analysefenster: @{triggerBody()?['data']?['anomalous_percent']}%</p>",
+          "Importance": "Normal",
+          "Subject": "Anomalie bei Teststand erkannt",
+          "To": "alarm@example.invalid"
+        },
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['office365']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/v2/Mail"
+      },
+      "runAfter": {},
+      "type": "ApiConnection"
+    }
+  },
+  "contentVersion": "1.0.0.0",
+  "outputs": {},
+  "parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "Bei_Eintritt_eines_Ressourcenereignisses": {
+      "inputs": {
+        "body": {
+          "properties": {
+            "destination": {
+              "endpointType": "webhook",
+              "properties": {
+                "endpointUrl": "@listCallbackUrl()"
+              }
+            },
+            "filter": {
+              "includedEventTypes": [
+                "Pruefstand.AnomalieErkannt"
+              ]
+            },
+            "topic": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-cloud-projekt-dev/providers/Microsoft.EventGrid/topics/evgt-pruefstand-a23c51c917a9"
+          }
+        },
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['azureeventgrid']['connectionId']"
+          }
+        },
+        "path": "/subscriptions/@{encodeURIComponent('00000000-0000-0000-0000-000000000000')}/providers/@{encodeURIComponent('Microsoft.EventGrid.Topics')}/resource/eventSubscriptions",
+        "queries": {
+          "x-ms-api-version": "2017-09-15-preview"
+        }
+      },
+      "splitOn": "@triggerBody()",
+      "type": "ApiConnectionWebhook"
+    }
+  }
+}

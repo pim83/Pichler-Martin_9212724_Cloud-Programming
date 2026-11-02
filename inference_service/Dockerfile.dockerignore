@@ -1,0 +1,8 @@
+# Nur benötigter Code darf in den Build-Kontext. Keine Messdaten oder Secrets.
+**
+!autoencoder/
+!autoencoder/model.py
+!inference_service/
+!inference_service/*.py
+!inference_service/requirements.lock.txt
+!inference_service/Dockerfile

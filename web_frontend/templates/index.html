@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% block content %}
+<p class="eyebrow">MESSUNGEN</p><h1>Ergebnisse im Überblick</h1>
+<p>Normal oder auffällig: die zuletzt aktualisierten Ergebnisse deines Prüfstands.</p>
+<section class="cards" aria-label="Zusammenfassung der geladenen Messungen">
+<article><span>Geladene Messungen</span><strong>{{ total }}</strong></article>
+<article><span>Normal</span><strong>{{ normal }}</strong></article>
+<article><span>Auffällig</span><strong>{{ anomaly }}</strong></article></section>
+<form method="get"><label>Prüfstand<input name="device_id" value="{{ device }}" required maxlength="128" pattern="[A-Za-z0-9_-]+"></label>
+<label>Status<select name="status">{% for value, label in [('all','Alle'),('normal','Normal'),('anomaly','Auffällig')] %}
+<option value="{{ value }}" {% if selected == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+<button type="submit">Anzeigen / Aktualisieren</button></form>
+<p class="note">{{ rows|length }} angezeigt · Filter und Kennzahlen beziehen sich auf höchstens 100 geladene Messungen.
+{% if has_more %}Es sind weitere ältere Ergebnisse vorhanden.{% endif %}</p>
+<div class="table"><table><thead><tr><th>Messungs-ID</th><th>Status</th><th>Auffällige Fenster</th><th>Letzte Aktualisierung</th><th>Details</th></tr></thead>
+<tbody>{% for row in rows %}<tr><td class="mono">{{ row.measurement_id }}</td>
+<td><span class="badge {{ 'alarm' if row.measurement_anomalous else 'normal' }}">{{ 'Auffällig' if row.measurement_anomalous else 'Normal' }}</span></td>
+<td>{{ row.anomalous_percent|percent }}</td><td>{{ row.updated_at|localtime }}</td>
+<td><a href="{{ url_for('detail', mid=row.measurement_id, device_id=device) }}" aria-label="Details zur Messung {{ row.measurement_id }}">Öffnen →</a></td></tr>
+{% else %}<tr><td colspan="5">Keine Messungen für diese Auswahl vorhanden.</td></tr>{% endfor %}</tbody></table></div>
+<p class="note">„Letzte Aktualisierung“ bezeichnet die Änderung des gespeicherten Ergebnisses, nicht den Messzeitpunkt.</p>
+{% endblock %}

@@ -1,0 +1,53 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+local.settings.json
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Terraform state, plans and downloaded providers
+**/.terraform/
+*.tfstate*
+*.tfplan
+*.plan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+# Commit .terraform.lock.hcl when generated; it contains no credentials.
+
+# Python and local output
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+*.zip
+*.log
+tmp/
+outputs/
+inference_service/local_check/
+trainingsdaten/
+messdatengenerator/daten_neu/
+autoencoder/modell_neu/
+
+# Private submission, screenshots and workstation files
+*.pdf
+*.xlsx
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
