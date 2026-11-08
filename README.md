@@ -175,6 +175,8 @@ Danach `inference_enabled = false` setzen, planen/anwenden und abschließend `te
 
 ## Betriebsannahmen
 
+Die [Kostenkalkulation aus dem Azure-Preisrechner](Kostenkalkulation/ExportedEstimate.xlsx) enthält die geschätzten Betriebskosten und die zugrunde gelegten Dienstkonfigurationen.
+
 Der Prototyp nutzt eine B1-Einheit. Zehn Prüfstände mit stündlichen 60-Sekunden-Messungen benötigen mindestens 432.000 Nachrichteneinheiten täglich und deshalb zwei B1-Einheiten (`iothub_units = 2`). Ein automatischer Sendezeitplan ist nicht enthalten. F1 und gemeinsamer Passwortzugang dienen der Demonstration, Schlüsselrotation erfolgt manuell.
 
 ## Dokumentation der verwendeten Werkzeuge

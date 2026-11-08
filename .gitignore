@@ -47,6 +47,7 @@ autoencoder/modell_neu/
 # Private submission, screenshots and workstation files
 *.pdf
 *.xlsx
+!/Kostenkalkulation/ExportedEstimate.xlsx
 .idea/
 .vscode/
 .DS_Store
